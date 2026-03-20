@@ -133,12 +133,19 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 48px 80px;
       position: relative;
       overflow: hidden;
+      gap: 40px;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
     }
 
     .hero-bg {
@@ -156,7 +163,7 @@
       top: 0;
       bottom: 0;
       width: 55%;
-      opacity: 0.04;
+      opacity: 0.18;
     }
 
     .hero-eyebrow {
@@ -561,15 +568,22 @@
     }
 
     /* ── RESPONSIVE ── */
+    .hero-cube-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
     /* ── BTTV CUBE ── */
     .bttv-cube-wrap {
-      position: absolute;
-      left: 52%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
       opacity: 0;
       animation: fadeIn 1.2s ease 1s forwards;
+      z-index: 2;
     }
 
     .bttv-cube {
@@ -583,7 +597,12 @@
       50%       { transform: translateY(-50%) translateY(-12px); }
     }
 
-    .bttv-cube-wrap { animation: fadeIn 1.2s ease 1s forwards, float 4s ease-in-out 2s infinite; }
+    .bttv-cube-wrap { animation: fadeIn 1.2s ease 1s forwards, float2 4s ease-in-out 2s infinite; }
+
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-12px); }
+    }
 
     @keyframes speedPulse {
       0%, 100% { opacity: 0.4; }
@@ -607,10 +626,13 @@
 
     @media (max-width: 768px) {
       .bttv-cube-wrap { display: none; }
+      .hero-cube-col { display: none; }
     
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
-      .hero { padding: 0 24px 60px; }
+      .hero { padding: 80px 24px 60px; grid-template-columns: 1fr; }
+      .bttv-cube-wrap { display: none; }
+      .hero-cube-col { display: none; }
       .philosophy, .work, .founder, .contact { padding-left: 24px; padding-right: 24px; }
       .phil-grid { grid-template-columns: 1fr; gap: 40px; }
       .work-grid { grid-template-columns: 1fr; }
@@ -640,16 +662,30 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-
-    <!-- Gothic arch SVG -->
     <svg class="hero-arch" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M200 0 C200 0, 400 150, 400 350 C400 550, 300 700, 200 800 C100 700, 0 550, 0 350 C0 150, 200 0, 200 0Z" stroke="#00c8ff" stroke-width="1" fill="none"/>
-      <path d="M200 40 C200 40, 360 175, 360 350 C360 525, 275 670, 200 760 C125 670, 40 525, 40 350 C40 175, 200 40, 200 40Z" stroke="#00c8ff" stroke-width="0.5" fill="none"/>
-      <line x1="200" y1="0" x2="200" y2="800" stroke="#00c8ff" stroke-width="0.3" stroke-dasharray="4 8"/>
-      <line x1="0" y1="350" x2="400" y2="350" stroke="#00c8ff" stroke-width="0.3" stroke-dasharray="4 8"/>
+      <path d="M200 0 C200 0, 400 150, 400 350 C400 550, 300 700, 200 800 C100 700, 0 550, 0 350 C0 150, 200 0, 200 0Z" stroke="#00c8ff" stroke-width="2" fill="none"/>
+      <path d="M200 40 C200 40, 360 175, 360 350 C360 525, 275 670, 200 760 C125 670, 40 525, 40 350 C40 175, 200 40, 200 40Z" stroke="#00c8ff" stroke-width="1" fill="rgba(0,200,255,0.03)"/>
+      <line x1="200" y1="0" x2="200" y2="800" stroke="#00c8ff" stroke-width="0.5" stroke-dasharray="4 8"/>
+      <line x1="0" y1="350" x2="400" y2="350" stroke="#00c8ff" stroke-width="0.5" stroke-dasharray="4 8"/>
     </svg>
 
-    <!-- BTTV Neon Cube -->
+    <!-- Text Column -->
+    <div class="hero-text">
+    <p class="hero-eyebrow">Blue Ring Holdings LLC · Wilmington, NC</p>
+    <h1>We Build<br><em>Modern</em><br>Cathedrals.</h1>
+    <p class="hero-sub">
+      Software systems built with the patience of stone masons and the
+      precision of architects. Not templates. Not shortcuts. Infrastructure
+      that compounds.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Start a Conversation</a>
+      <a href="#work" class="btn-ghost">See the Work</a>
+    </div>
+    </div>
+
+    <!-- Cube Column -->
+    <div class="hero-cube-col">
     <div class="bttv-cube-wrap">
       <svg class="bttv-cube" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -723,19 +759,8 @@
         <ellipse cx="100" cy="252" rx="28" ry="6" fill="#00c8ff" opacity="0.15" filter="url(#glow-strong)"/>
       </svg>
     </div>
-
-    <p class="hero-eyebrow">Blue Ring Holdings LLC · Wilmington, NC</p>
-    <h1>We Build<br><em>Modern</em><br>Cathedrals.</h1>
-    <p class="hero-sub">
-      Software systems built with the patience of stone masons and the
-      precision of architects. Not templates. Not shortcuts. Infrastructure
-      that compounds.
-    </p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Start a Conversation</a>
-      <a href="#work" class="btn-ghost">See the Work</a>
     </div>
-    <span class="scroll-hint">Scroll</span>
+
   </section>
 
   <div class="rule"></div>
@@ -773,7 +798,7 @@
     <p class="section-label reveal">§ 02 — Built Work</p>
     <div class="work-grid">
 
-      <a class="work-card reveal" href="https://livewilmington.com" target="_blank">
+      <a class="work-card reveal" href="https://www.livewilmingtonmap.com" target="_blank">
         <p class="work-num">001</p>
         <h3 class="work-title">BlueTubeTV</h3>
         <p class="work-desc">
@@ -804,6 +829,39 @@
           — built once as a template, deployed as a platform.
         </p>
         <span class="work-tag">Active Clients · 8 Deployments</span>
+      </a>
+
+      <a class="work-card reveal" href="https://cellphoneparadise.vercel.app/" target="_blank">
+        <p class="work-num">004</p>
+        <h3 class="work-title">Cell Phone Paradise</h3>
+        <p class="work-desc">
+          Repair shop platform with AI chatbot, bilingual EN/ES service pages,
+          real-time status updates, and an owner dashboard tracking every
+          customer interaction — built on the agency template.
+        </p>
+        <span class="work-tag">Live · Agency Client · Wilmington</span>
+      </a>
+
+      <a class="work-card reveal" href="https://dirtbikz.vercel.app/" target="_blank">
+        <p class="work-num">005</p>
+        <h3 class="work-title">Dirtbikz</h3>
+        <p class="work-desc">
+          Dirt bike marketplace with admin login, inventory management,
+          bilingual listings, and a full buyer-facing storefront — first
+          marketplace vertical in the agency portfolio.
+        </p>
+        <span class="work-tag">Live · Marketplace · Admin Portal</span>
+      </a>
+
+      <a class="work-card reveal" href="https://dirtbikz.vercel.app/admin/login" target="_blank">
+        <p class="work-num">006</p>
+        <h3 class="work-title">Dirtbikz Admin</h3>
+        <p class="work-desc">
+          Protected admin portal for inventory, listings, and analytics.
+          Demonstrates the owner dashboard pattern deployed across every
+          BluRing agency client — login-gated, real-time, and clean.
+        </p>
+        <span class="work-tag">Admin · Protected · Live Demo</span>
       </a>
 
     </div>
@@ -851,13 +909,13 @@
       </p>
     </div>
     <div class="contact-right">
-      <a href="mailto:garlan@blueringholdings.com" class="contact-link reveal">
+      <a href="/cdn-cgi/l/email-protection#a9cec8dbc5c8c7e9cbc5dcccdbc0c7cec1c6c5cdc0c7ceda87cac6c4" class="contact-link reveal">
         <div>
           <p class="contact-link-label">Email</p>
-          <p class="contact-link-value">garlan@blueringholdings.com</p>
+          <p class="contact-link-value"><span class="__cf_email__" data-cfemail="563137243a373816343a2333243f38313e393a323f3831257835393b">[email&#160;protected]</span></p>
         </div>
       </a>
-      <a href="https://linkedin.com/in/garlanrobinson" class="contact-link reveal" target="_blank">
+      <a href="www.linkedin.com/in/garlan-robinson-69494418" class="contact-link reveal" target="_blank">
         <div>
           <p class="contact-link-label">LinkedIn</p>
           <p class="contact-link-value">linkedin.com/in/garlanrobinson</p>
