@@ -392,6 +392,46 @@
       text-transform: uppercase;
     }
 
+    /* ── DEPLOYMENTS ── */
+    .work-deployments {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .work-deployments a {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      text-decoration: none;
+      color: var(--ash);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.4;
+      border-left: 1px solid var(--mortar);
+      padding-left: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .work-deployments a:hover {
+      color: var(--parchment);
+      border-left-color: var(--gold);
+    }
+
+    .deploy-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      opacity: 0.5;
+      min-width: 28px;
+    }
+
+    .deploy-name {
+      flex: 1;
+    }
+
     /* ── PROOF ── */
     .proof {
       padding: 80px 48px;
@@ -820,49 +860,30 @@
         <span class="work-tag">Live · Transaction Rail · Coastal NC</span>
       </a>
 
-      <a class="work-card reveal" href="https://blueringholdings.com" target="_blank">
+      <div class="work-card reveal">
         <p class="work-num">003</p>
-        <h3 class="work-title">Web Agency</h3>
+        <h3 class="work-title">Client Deployments</h3>
         <p class="work-desc">
-          Bilingual demo sites for Wilmington businesses. Real-time kitchen
-          status, owner dashboards, overlay rotators, and impression tracking
-          — built once as a template, deployed as a platform.
+          Kyoto-powered storefronts and admin panels. Each site runs its own
+          isolated config on shared infrastructure — one platform, many outputs.
         </p>
-        <span class="work-tag">Active Clients · 8 Deployments</span>
-      </a>
+        <div class="work-deployments">
+          <a href="https://cellphoneparadise.vercel.app/" target="_blank">
+            <span class="deploy-num">004</span>
+            <span class="deploy-name">Cell Phone Paradise</span>
+          </a>
+          <a href="https://dirtbikz.vercel.app/" target="_blank">
+            <span class="deploy-num">005</span>
+            <span class="deploy-name">Dirtbikz</span>
+          </a>
+          <a href="https://dirtbikz.vercel.app/admin/login" target="_blank">
+            <span class="deploy-num">006</span>
+            <span class="deploy-name">Dirtbikz Admin</span>
+          </a>
+        </div>
+        <span class="work-tag">Live · Kyoto Platform · Multi-tenant</span>
+      </div>
 
-      <a class="work-card reveal" href="https://cellphoneparadise.vercel.app/" target="_blank">
-        <p class="work-num">004</p>
-        <h3 class="work-title">Cell Phone Paradise</h3>
-        <p class="work-desc">
-          Repair shop platform with AI chatbot, bilingual EN/ES service pages,
-          real-time status updates, and an owner dashboard tracking every
-          customer interaction — built on the agency template.
-        </p>
-        <span class="work-tag">Live · Agency Client · Wilmington</span>
-      </a>
-
-      <a class="work-card reveal" href="https://dirtbikz.vercel.app/" target="_blank">
-        <p class="work-num">005</p>
-        <h3 class="work-title">Dirtbikz</h3>
-        <p class="work-desc">
-          Dirt bike marketplace with admin login, inventory management,
-          bilingual listings, and a full buyer-facing storefront — first
-          marketplace vertical in the agency portfolio.
-        </p>
-        <span class="work-tag">Live · Marketplace · Admin Portal</span>
-      </a>
-
-      <a class="work-card reveal" href="https://dirtbikz.vercel.app/admin/login" target="_blank">
-        <p class="work-num">006</p>
-        <h3 class="work-title">Dirtbikz Admin</h3>
-        <p class="work-desc">
-          Protected admin portal for inventory, listings, and analytics.
-          Demonstrates the owner dashboard pattern deployed across every
-          BluRing agency client — login-gated, real-time, and clean.
-        </p>
-        <span class="work-tag">Admin · Protected · Live Demo</span>
-      </a>
 <a class="work-card reveal" href="https://www.longwatch.win/" target="_blank">
   <p class="work-num">007</p>
   <h3 class="work-title">Long Watch</h3>
